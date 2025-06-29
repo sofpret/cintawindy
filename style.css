@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  background: linear-gradient(to bottom right, #ffe6f0, #ffffff);
+  color: #333;
+  text-align: center;
+  padding: 50px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #fff0f6;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 20px;
+}
