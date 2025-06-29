@@ -82,3 +82,42 @@ p {
     opacity: 0;
   }
 }
+#musik-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.musik-box {
+  background: #ffffffcc;
+  padding: 30px 40px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.musik-box button {
+  font-size: 1.2em;
+  background: #ff90b3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.musik-box button:hover {
+  background: #ff6490;
+}
+
+body.stop-scroll {
+  overflow: hidden;
+}
