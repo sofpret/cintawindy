@@ -7,13 +7,37 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
- <div id="musik-overlay">
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const btn = document.getElementById("playBtn");
+    const audio = document.getElementById("lagu");
+    const overlay = document.getElementById("musik-overlay");
+
+    document.body.classList.add("stop-scroll");
+
+    btn.addEventListener("click", async () => {
+      try {
+        await audio.play();
+        overlay.style.display = "none";
+        document.body.classList.remove("stop-scroll");
+        console.log("Musik mulai!");
+      } catch (err) {
+        alert("Browser kamu blokir musik otomatis 😢. Coba klik lagi ya.");
+        console.error("Gagal play musik:", err);
+      }
+    });
+  });
+</script>
+
+<!-- Overlay Musik -->
+<div id="musik-overlay">
   <div class="musik-box">
-    <p>Klik untuk mulai 💖</p>
-    <button onclick="mulaiMusik()">Putar Musik 🎶</button>
+    <p>Klik di sini dulu ya sayang 💕</p>
+    <button id="playBtn">Putar Musik 🎶</button>
   </div>
 </div>
 
+<!-- Audio -->
 <audio id="lagu" loop>
   <source src="assets/backsound.mp3" type="audio/mpeg">
 </audio>
