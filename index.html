@@ -53,9 +53,21 @@
     .musik-box button:hover {
       background: #ff6490;
     }
+
+    /* Canvas efek partikel */
+    #partikelCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Efek Partikel Pink -->
+  <canvas id="partikelCanvas"></canvas>
 
   <!-- Overlay Musik -->
   <div id="musik-overlay">
@@ -88,6 +100,64 @@
     </div>
   </div>
 
+  <!-- Script efek partikel pink glowing -->
+  <script>
+    const canvas = document.getElementById("partikelCanvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    function Particle() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.radius = Math.random() * 3 + 1;
+      this.speedY = Math.random() * 1 + 0.5;
+      this.alpha = Math.random() * 0.5 + 0.5;
+      this.color = `rgba(255, 105, 180, ${this.alpha})`;
+    }
+
+    Particle.prototype.draw = function () {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.shadowColor = "hotpink";
+      ctx.shadowBlur = 8;
+      ctx.fill();
+    };
+
+    Particle.prototype.update = function () {
+      this.y += this.speedY;
+      if (this.y > canvas.height) {
+        this.y = 0;
+        this.x = Math.random() * canvas.width;
+      }
+      this.draw();
+    };
+
+    function initParticles(count) {
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => p.update());
+      requestAnimationFrame(animateParticles);
+    }
+
+    initParticles(100);
+    animateParticles();
+  </script>
+
   <!-- Script Musik -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -111,7 +181,7 @@
     });
   </script>
 
-  <!-- Efek bunga jatuh (jika pakai script.js) -->
+  <!-- Jika masih ada script.js lain -->
   <script src="script.js"></script>
 </body>
 </html>
