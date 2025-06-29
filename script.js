@@ -1,4 +1,16 @@
+function mulaiMusik() {
+  const audio = document.getElementById('lagu');
+  const overlay = document.getElementById('musik-overlay');
+
+  audio.play();
+  overlay.style.display = 'none';
+  document.body.classList.remove('stop-scroll');
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add('stop-scroll');
+
+  // efek bunga jatuh (opsional)
   const total = 20;
   for (let i = 0; i < total; i++) {
     const flower = document.createElement("div");
@@ -8,4 +20,3 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.appendChild(flower);
   }
 });
-
