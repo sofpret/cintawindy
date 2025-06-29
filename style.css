@@ -1,22 +1,52 @@
 body {
-  font-family: sans-serif;
-  background: linear-gradient(to bottom right, #ffe6f0, #ffffff);
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #fff0f5, #fefefe);
   color: #333;
   text-align: center;
-  padding: 50px;
+  margin: 0;
+  padding: 30px;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 1000px;
   margin: auto;
-  background: #fff0f6;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  background: #fff9fb;
+  padding: 40px 20px;
+  border-radius: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-img {
+h1 {
+  font-size: 2.5em;
+  color: #e75480;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 30px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.photo-frame {
+  background: #fff0f0;
+  border: 8px solid #fcd5ce;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+.photo-frame:hover {
+  transform: scale(1.03);
+}
+
+.photo-frame img {
   width: 100%;
   border-radius: 10px;
-  margin-top: 20px;
 }
+
