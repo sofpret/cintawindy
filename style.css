@@ -59,3 +59,26 @@ p {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+.flower {
+  position: fixed;
+  top: -50px;
+  width: 25px;
+  height: 25px;
+  background-image: url('https://i.ibb.co/S5d4Hq1/sakura.png');
+  background-size: cover;
+  opacity: 0.8;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
