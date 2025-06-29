@@ -5,43 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cerita Kita 💖</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    body.stop-scroll {
+      overflow: hidden;
+    }
+
+    #musik-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .musik-box {
+      background: #ffffffdd;
+      padding: 30px 40px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .musik-box button {
+      font-size: 1.2em;
+      background: #ff90b3;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .musik-box button:hover {
+      background: #ff6490;
+    }
+  </style>
 </head>
 <body>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const btn = document.getElementById("playBtn");
-    const audio = document.getElementById("lagu");
-    const overlay = document.getElementById("musik-overlay");
 
-    document.body.classList.add("stop-scroll");
-
-    btn.addEventListener("click", async () => {
-      try {
-        await audio.play();
-        overlay.style.display = "none";
-        document.body.classList.remove("stop-scroll");
-        console.log("Musik mulai!");
-      } catch (err) {
-        alert("Browser kamu blokir musik otomatis 😢. Coba klik lagi ya.");
-        console.error("Gagal play musik:", err);
-      }
-    });
-  });
-</script>
-
-<!-- Overlay Musik -->
-<div id="musik-overlay">
-  <div class="musik-box">
-    <p>Klik di sini dulu ya sayang 💕</p>
-    <button id="playBtn">Putar Musik 🎶</button>
+  <!-- Overlay Musik -->
+  <div id="musik-overlay">
+    <div class="musik-box">
+      <p>Klik di sini dulu ya sayang 💕</p>
+      <button id="playBtn">Putar Musik 🎶</button>
+    </div>
   </div>
-</div>
 
-<!-- Audio -->
-<audio id="lagu" loop>
-  <source src="assets/backsound.mp3" type="audio/mpeg">
-</audio>
+  <!-- Audio -->
+  <audio id="lagu" loop>
+    <source src="assets/backsound.mp3" type="audio/mpeg">
+  </audio>
 
+  <!-- Konten Galeri -->
   <div class="container">
     <h1>Hai Sayangku 🧸💞</h1>
     <p>Ini semua buat kamu... karena kamu spesial banget 💌</p>
@@ -59,6 +88,30 @@
     </div>
   </div>
 
+  <!-- Script Musik -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const btn = document.getElementById("playBtn");
+      const audio = document.getElementById("lagu");
+      const overlay = document.getElementById("musik-overlay");
+
+      document.body.classList.add("stop-scroll");
+
+      btn.addEventListener("click", async () => {
+        try {
+          await audio.play();
+          overlay.style.display = "none";
+          document.body.classList.remove("stop-scroll");
+          console.log("Musik mulai!");
+        } catch (err) {
+          alert("Browser kamu blokir musik otomatis 😢. Coba klik lagi ya.");
+          console.error("Gagal play musik:", err);
+        }
+      });
+    });
+  </script>
+
+  <!-- Efek bunga jatuh (jika pakai script.js) -->
   <script src="script.js"></script>
 </body>
 </html>
